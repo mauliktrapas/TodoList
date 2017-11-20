@@ -1,0 +1,20 @@
+form(method="POST")
+    p name:
+        input(type="text",name="name")
+    p todo:
+        input(type="text",name="todo")
+    p: button Add
+
+
+    if posts.length > 0
+        ul
+            each person in posts
+                li
+                    h2=person.name +"(" + person.todo +")"+ "{\t" + person.date +"}"
+                    p
+                        a(href="/update/#{person._id}")
+                            input(type="button",value="update")
+                        a(href="/delete/#{person._id}")
+                            input(type="button",value="delete")
+    else
+        p  No data
